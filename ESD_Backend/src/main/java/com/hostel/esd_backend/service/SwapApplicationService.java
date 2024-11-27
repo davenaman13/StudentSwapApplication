@@ -76,4 +76,18 @@ public class SwapApplicationService {
         swapApplicationRepo.save(request);
         return "Room swap request rejected!";
     }
+
+    public List<SwapResponseDTO> getApplicantRequests(Long applicantId) {
+        List<SwapApplication> requests = swapApplicationRepo.findByApplicantId(applicantId);
+        return requests.stream()
+                .map(request -> SwapResponseDTO.builder()
+                        .id(request.getId())
+                        .applicantName(request.getApplicant().getFirstName())
+                        .recipientName(request.getRecipient().getFirstName())
+                        .applicantMessage(request.getApplicantMessage())
+                        .recipientMessage(request.getRecipientMessage())
+                        .status(request.getStatus().name())
+                        .build())
+                .collect(Collectors.toList());
+    }
 }

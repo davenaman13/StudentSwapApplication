@@ -1,0 +1,19 @@
+.requests-container {
+    margin-top: 20px;
+}
+
+.request-card {
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #f8f9fa;
+}
+
+.request-card p {
+    margin: 5px 0;
+}
+
+.request-card button {
+    margin-right: 10px;
+}

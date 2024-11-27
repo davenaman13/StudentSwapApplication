@@ -26,6 +26,14 @@ public class SwapApplicationController {
         return ResponseEntity.ok(swapApplicationService.getPendingRequests(recipientId));
     }
 
+    @GetMapping("/applicant")
+    public ResponseEntity<List<SwapResponseDTO>> getApplicantRequests(@RequestParam Long applicantId) {
+        return ResponseEntity.ok(swapApplicationService.getApplicantRequests(applicantId));
+    }
+
+
+
+
     @PostMapping("/accept/{id}")
     public ResponseEntity<String> acceptRequest(@PathVariable Long id) {
         return ResponseEntity.ok(swapApplicationService.acceptRequest(id));

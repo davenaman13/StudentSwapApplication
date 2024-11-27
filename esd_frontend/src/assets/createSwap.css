@@ -1,0 +1,58 @@
+.create-swap-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-swap-container h2 {
+    margin-bottom: 20px;
+    color: #495057;
+}
+
+.create-swap-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-swap-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #495057;
+}
+
+.create-swap-container input,
+.create-swap-container textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.create-swap-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.create-swap-container button:hover {
+    background-color: #0056b3;
+}
+
+.create-swap-container .success-message {
+    color: green;
+    margin-bottom: 10px;
+}
+
+.create-swap-container .error-message {
+    color: red;
+    margin-bottom: 10px;
+}
