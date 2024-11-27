@@ -25,4 +25,7 @@ public class Student {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Hostel hostel;
 }
