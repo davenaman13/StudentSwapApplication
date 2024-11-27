@@ -17,6 +17,7 @@ const CreateSwap = ({ applicantId, token }) => {
             setRecipientId("");
             setMessage("");
         } catch (err) {
+            console.log(err);
             setError(err.message);
             setSuccess(null);
         }

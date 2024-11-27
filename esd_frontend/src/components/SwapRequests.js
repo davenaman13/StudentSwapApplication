@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchPendingRequests, fetchApplicantRequests, acceptSwapRequest } from "../utils/api";
+import { fetchPendingRequests, fetchApplicantRequests, acceptSwapRequest, rejectSwapRequest } from "../utils/api";
 import "../assets/swapRequests.css";
 
 const SwapRequests = ({ applicantId, recipientId, token }) => {
@@ -41,6 +41,16 @@ const SwapRequests = ({ applicantId, recipientId, token }) => {
             setError(err.message);
         }
     };
+    
+    const handleReject = async (requestId) => {
+        try {
+            await rejectSwapRequest(requestId, token);
+            setPendingRequests((prev) => prev.filter((req) => req.id !== requestId)); // Remove accepted request
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+    
 
     if (error) return <p>Error: {error}</p>;
 
@@ -55,6 +65,7 @@ const SwapRequests = ({ applicantId, recipientId, token }) => {
                         <p><strong>Applicant:</strong> {req.applicantName}</p>
                         <p><strong>Message:</strong> {req.applicantMessage}</p>
                         <button className="btn btn-success" onClick={() => handleAccept(req.id)}>Accept</button>
+                        <button className="btn btn-success" onClick={() => handleReject(req.id)}>Reject</button>
                     </div>
                 ))
             )}

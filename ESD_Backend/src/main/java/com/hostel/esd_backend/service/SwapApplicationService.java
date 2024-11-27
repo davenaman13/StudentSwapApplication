@@ -20,7 +20,14 @@ public class SwapApplicationService {
     public String createSwapRequest(Long applicantId, SwapRequestDTO request) {
         Student applicant = studentRepo.findById(applicantId).orElseThrow();
         Student recipient = studentRepo.findById(request.recipientId()).orElseThrow();
-
+        boolean existingRequest = swapApplicationRepo.existsByApplicantIdAndRecipientIdAndStatus(
+                applicantId,
+                request.recipientId(),
+                SwapApplication.Status.PENDING
+        );
+        if (existingRequest) {
+            throw new RuntimeException("A pending swap request already exists between the applicant and recipient");
+        }
         SwapApplication swapApplication = SwapApplication.builder()
                 .applicant(applicant)
                 .recipient(recipient)
